@@ -32,6 +32,12 @@ namespace Tele
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tele", Version = "v1" });
             });
+
+            services.AddMongo().AddMongoRepository<Order>("pizzaItems");
+            services.AddControllers(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
